@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import PrintBlogs from "./PrintBlogs";
+import PropTypes from 'prop-types';
 
-const BlogsData = () => {
+const BlogsData = ({bookMarkHandel}) => {
 
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
@@ -13,9 +14,9 @@ const BlogsData = () => {
     }, [])
 
     return (
-        <div className=" w-8/12 space-y-4">
+        <div className="  space-y-4">
             {
-                blogs.map(blog =>  <PrintBlogs key={blog.id} blog={blog} ></PrintBlogs> )
+                blogs.map(blog =>  <PrintBlogs key={blog.id} blog={blog} bookMarkHandel={bookMarkHandel} ></PrintBlogs> )
             }
 
 
@@ -24,4 +25,8 @@ const BlogsData = () => {
     );
 };
 
+BlogsData.propTypes={
+    bookMarkHandel:PropTypes.func.isRequired
+
+}
 export default BlogsData;

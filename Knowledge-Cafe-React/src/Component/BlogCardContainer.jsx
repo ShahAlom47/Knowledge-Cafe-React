@@ -1,12 +1,17 @@
 import BlogsData from "./BlogsData";
-
-const BlogCardContainer = () => {
+import PropTypes from 'prop-types';
+const BlogCardContainer = ({bookMarkHandel}) => {
+    
     return (
         <div>
-            <BlogsData></BlogsData>
+            <BlogsData bookMarkHandel={bookMarkHandel}></BlogsData>
             
         </div>
     );
 };
 
+BlogCardContainer.propTypes={
+    bookMarkHandel:PropTypes.func.isRequired
+
+}
 export default BlogCardContainer;
