@@ -1,14 +1,16 @@
 
 import { CiBookmark } from "react-icons/ci";
 import PropTypes from 'prop-types';
+import { useState } from "react";
 
 const PrintBlogs = ({ blog, bookMarkHandel }) => {
-    // const blogD = blog.blog
-
-
-    // console.log(blog.id);
-
+  
     const { author, author_img, id, cover, hashtags, posted_date, reading_time, title } = blog;
+    const [isMarkd,setMarkd]=useState(false)
+const bookMarkBtn=()=>{
+    setMarkd(!isMarkd)
+    
+}
 
     return (
         <div>
@@ -31,7 +33,8 @@ const PrintBlogs = ({ blog, bookMarkHandel }) => {
                         </div>
                         <div className="flex gap-3 items-center">
                             <p className="font-bold"><span>{reading_time}</span> min read </p>
-                            <button onClick={() => bookMarkHandel(blog)} className="text-xl btn btn-link"><CiBookmark /></button>
+                            <button onClick={() => {bookMarkBtn(blog);bookMarkHandel(blog); }} className={isMarkd?'text-xl btn btn-link bg-green-400':'text-xl btn btn-link bg-none'}><CiBookmark /></button>
+
                         </div>
                     </div>
                     <h1 className="text-3xl font-bold ">{title}</h1>
