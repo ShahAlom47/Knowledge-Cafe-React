@@ -64,7 +64,7 @@ function App() {
     <>
       <Header></Header>
       <hr />
-      <div className=' my-8 flex lg:flex-row flex-col gap-7'>
+      <div className=' my-8 flex lg:flex-row flex-col gap-7 '>
         <div className=' lg:w-8/12'>
           <BlogCardContainer bookMarkHandel={bookMarkHandel} readTimeHandel={readTimeHandel}  ></BlogCardContainer>
         </div>
