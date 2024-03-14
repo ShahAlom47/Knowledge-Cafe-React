@@ -50,15 +50,15 @@ const PrintBlogs = ({ blog, bookMarkHandel,readTimeHandel }) => {
 
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl px-10">
+            <div className="card bg-base-100 shadow-xl py-5 px-10">
 
                 <img
-                    // src={cover}
+                    src={cover}
                     alt={'Cover Photo  ' + title}
                 />
 
-                <div className="card-body m-4">
-                    <div className=" flex justify-between ">
+                <div className="card-body m-4 p-0 py-3">
+                    <div className=" flex lg:flex-row flex-col gap-3 justify-between ">
 
                         <div className="flex  gap-3 items-center">
                             <img className="h-10" src={author_img} alt="" />
