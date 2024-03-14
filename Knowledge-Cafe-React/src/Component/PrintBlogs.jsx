@@ -3,9 +3,9 @@ import { CiBookmark } from "react-icons/ci";
 import PropTypes from 'prop-types';
 import { useEffect, useState } from "react";
 
-const PrintBlogs = ({ blog, bookMarkHandel,bookData }) => {
+const PrintBlogs = ({ blog, bookMarkHandel,readTimeHandel }) => {
 
-    const { author, author_img, cover, hashtags, posted_date, reading_time, title } = blog;
+    const { author, author_img,id, cover, hashtags, posted_date, reading_time, title } = blog;
 
    
 
@@ -80,7 +80,7 @@ const PrintBlogs = ({ blog, bookMarkHandel,bookData }) => {
                             hashtags.map((hash, indx) => <span key={indx}># {hash}</span>)
                         }
                     </p>
-                    <button className="text-start underline text-lg font-semibold text-blue-600 btn btn-link text-start inline p-0">Mark as Read</button>
+                    <button onClick={()=>{readTimeHandel(reading_time,id)}} className="text-start underline text-lg font-semibold text-blue-600 btn btn-link text-start inline p-0">Mark as Read</button>
 
                 </div>
             </div>
@@ -94,6 +94,8 @@ const PrintBlogs = ({ blog, bookMarkHandel,bookData }) => {
 PrintBlogs.propTypes = {
 
     bookMarkHandel: PropTypes.func.isRequired,
+    readTimeHandel: PropTypes.func.isRequired,
     blog: PropTypes.object.isRequired
+
 };
 export default PrintBlogs;

@@ -9,7 +9,8 @@ const PrintBookM = ({data}) => {
     )
 }
 PrintBookM.propTypes={
-data:PropTypes.object.isRequired
+data:PropTypes.object.isRequired,
+
     
 }
 export default PrintBookM;
