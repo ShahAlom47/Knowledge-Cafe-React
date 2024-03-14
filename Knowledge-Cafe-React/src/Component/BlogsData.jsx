@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PrintBlogs from "./PrintBlogs";
 import PropTypes from 'prop-types';
 
-const BlogsData = ({bookMarkHandel}) => {
+const BlogsData = ({bookMarkHandel,bookData}) => {
 
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
@@ -16,7 +16,7 @@ const BlogsData = ({bookMarkHandel}) => {
     return (
         <div className="  space-y-4">
             {
-                blogs.map(blog =>  <PrintBlogs key={blog.id} blog={blog} bookMarkHandel={bookMarkHandel} ></PrintBlogs> )
+                blogs.map(blog =>  <PrintBlogs key={blog.id} blog={blog} bookMarkHandel={bookMarkHandel} bookData={bookData} ></PrintBlogs> )
             }
 
 

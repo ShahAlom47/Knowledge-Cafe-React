@@ -1,23 +1,59 @@
 
 import { CiBookmark } from "react-icons/ci";
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const PrintBlogs = ({ blog, bookMarkHandel }) => {
-  
-    const { author, author_img, id, cover, hashtags, posted_date, reading_time, title } = blog;
-    const [isMarkd,setMarkd]=useState(false)
-const bookMarkBtn=()=>{
-    setMarkd(!isMarkd)
+const PrintBlogs = ({ blog, bookMarkHandel,bookData }) => {
+
+    const { author, author_img, cover, hashtags, posted_date, reading_time, title } = blog;
+
+   
+
+    const [isMarkd, setMarkd] = useState(false)
+  useEffect(()=>{
+   
+        const localData= localStorage.getItem('book') ?JSON.parse(localStorage.getItem('book')) : [];
+        const bookMData = localData.some(item=>item.id===blog.id);
+        console.log(bookMData);
+        bookMData?setMarkd(true):setMarkd(false)
+        
+
+  },[blog])
+
+    const bookMarkBtn = (blog) => {
+        const xx= localStorage.getItem('book')
+        const localData= xx ?JSON.parse(localStorage.getItem('book')) : [];
+        const bookMData = localData.some(item=>item.id===blog.id);
+
+        if(bookMData){
+            const updateData = localData.filter(item => item.id !== blog.id)
+            localStorage.setItem('book',JSON.stringify(updateData))
+            setMarkd(false);
+
+        }
+        else{
+            localData.push(blog)
+            localStorage.setItem('book', JSON.stringify(localData));
+            setMarkd(true);
+           
+           
+         
+        }
+    }
+
+    // ==================
+
+
     
-}
+    // ==================
+  
 
     return (
         <div>
             <div className="card bg-base-100 shadow-xl px-10">
 
                 <img
-                    src={cover}
+                    // src={cover}
                     alt={'Cover Photo  ' + title}
                 />
 
@@ -33,7 +69,7 @@ const bookMarkBtn=()=>{
                         </div>
                         <div className="flex gap-3 items-center">
                             <p className="font-bold"><span>{reading_time}</span> min read </p>
-                            <button onClick={() => {bookMarkBtn(blog);bookMarkHandel(blog); }} className={isMarkd?'text-xl btn btn-link bg-green-400':'text-xl btn btn-link bg-none'}><CiBookmark /></button>
+                            <button onClick={() => { bookMarkBtn(blog); bookMarkHandel(blog); }} className={isMarkd ? 'text-xl btn btn-link bg-green-400' : 'text-xl btn btn-link bg-none'}><CiBookmark /></button>
 
                         </div>
                     </div>

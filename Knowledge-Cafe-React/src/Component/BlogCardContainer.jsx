@@ -1,10 +1,10 @@
 import BlogsData from "./BlogsData";
 import PropTypes from 'prop-types';
-const BlogCardContainer = ({bookMarkHandel}) => {
+const BlogCardContainer = ({bookMarkHandel,bookData}) => {
     
     return (
         <div>
-            <BlogsData bookMarkHandel={bookMarkHandel}></BlogsData>
+            <BlogsData bookMarkHandel={bookMarkHandel} bookData={bookData}></BlogsData>
             
         </div>
     );
